@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>List of Flights</title>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/flights/">Available Flights</a>
+        <a href="/flights/new">Add Flights</a>
+    </nav>
+
+    <h1>Available Flights</h1>
+    <p><%= new Date().toLocaleString()%></p>
+    <table>
+        <thead>
+
+            <th>Airline</th>
+            <th>Flight Number</th>
+            <th>Date</th>
+            <th>Time</th>
+        </thead>
+
+        <tbody>
+            <%flights.forEach((flight)=> { %>
+            <tr>
+
+                <td><%= flight.airline%></td>
+                <td><%= flight.flightNumber%></td>
+                <td><%=flight.departs.getMonth() + ' / ' + flight.departs.getDate() + ' / ' + flight.departs.getFullYear() %>
+                </td>
+                <td><%=flight.departs.getHours() + ' : ' + flight.departs.getMinutes() %></td>
+                <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
+            </tr>
+            <%   })%>
+        </tbody>
+    </table>
+    <br>
+</body>
+
+</html>

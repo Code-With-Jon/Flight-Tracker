@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Details</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/flights/">Available Flights</a>
+        <a href="/flights/new">Add Flights</a>
+    </nav>
+
+    <h1>Add a Destination</h1>
+    <form id="add-details-form" method="POST" action="/flights/<%= flight._id %>/details">
+
+        <label>Add Destination:</label>
+
+        <select name='airport'>
+            <option value='AUS'>AUS</option>
+            <option value='DAL'>DAL</option>
+            <option value='LAX'>LAX</option>
+            <option value='SAN'>SAN</option>
+            <option value='SEA'>SEA</option>
+        </select>
+        <label>Date
+            <input type="date" name="arrival">
+        </label><br>
+        <br>
+        <input type="submit" value="Add Destination">
+    </form>
+
+    <a href="/flights/<%= flight._id %>/tickets/new">Purchase Tickets</a>
+
+    <% if (flight.destinations.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Destination</th>
+                <th>Arrival Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% flight.destinations.forEach(function(des) { %>
+            <tr>
+                <td><%= des.airport %></td>
+                <td><%= des.arrival %></td>
+
+
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <h5>No Destination Selected Yet</h5>
+    <% } %>
+</body>
+
+</html>
