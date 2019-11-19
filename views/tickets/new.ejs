@@ -10,7 +10,7 @@
 
 <body>
     <form action="/flights/<%=id%>/tickets" method="POST">
-        <input name="seat" required pattern="[A-F][1-9]\d?">Seat Selection</input>
+        <input name="seat" required pattern="[A-F][1-99]\d?">Seat Selection</input>
         <input name='price'>price</input>
         <input type='submit' value='Purchase Ticket'>
     </form>

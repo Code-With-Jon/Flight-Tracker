@@ -44,6 +44,7 @@
             <tr>
                 <th>Destination</th>
                 <th>Arrival Date</th>
+                <th>Ticket</th>
             </tr>
         </thead>
         <tbody>
@@ -52,10 +53,14 @@
             <tr>
                 <td><%= des.airport %></td>
                 <td><%= des.arrival %></td>
-
+                <% }); %>
+                <% tickets.forEach((ticket) => { %>
+                <td><%= ticket.seat %></td>
+                })
+                <% })%>
 
             </tr>
-            <% }); %>
+
         </tbody>
     </table>
     <% } else { %>
